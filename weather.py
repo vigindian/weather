@@ -1,5 +1,5 @@
 #
-# Python script to get input and show weather
+# Python script to get City name as user input and show weather details
 #
 # Vignesh Narasimhulu
 #
@@ -11,7 +11,11 @@ import json
 baseurl='http://api.openweathermap.org/data/2.5/weather?q='
 apikey='c5df5a566d55d3251922e9d9e057d763'
 
-city='Singapore'
+try:
+   city=str(input("Find your City: "))
+   #city='Singapore'
+except ValueError:
+    print ("Sorry. Please provide a valid input, thanks!")
 
 r=requests.get(baseurl + city+"&APPID="+apikey)
 #check RC
@@ -31,3 +35,9 @@ if (rc == 200):
     print ("Current Temperature in Celsius: " + f"{ctemp:.2f}")
     print ("Humidity: " + str(humidity) + "%")
     print ("Weather Condition: " + str(wdesc))
+
+#handle city not found
+elif (rc == 404):
+    print ("Sorry. City not found!")
+else:
+    print ("Sorry, unable to retrieve the data at the moment!")
