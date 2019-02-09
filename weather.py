@@ -22,5 +22,12 @@ if (rc == 200):
     #access the json data
     rj=r.json()
     #print(rj)
-    lon=rj['coord']['lon']
-    print (lon)
+    temp=rj['main']['temp']
+    ctemp=int(temp)-273.15
+    humidity=rj['main']['humidity']
+    wdesc=rj['weather'][0]['description']
+    #round-off to 2 decimal places
+    print ("City Name: " +city)
+    print ("Current Temperature in Celsius: " + f"{ctemp:.2f}")
+    print ("Humidity: " + str(humidity) + "%")
+    print ("Weather Condition: " + str(wdesc))
