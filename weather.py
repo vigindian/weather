@@ -9,7 +9,8 @@ import json
 
 #define the base url and the api-key to access weather data
 baseurl='http://api.openweathermap.org/data/2.5/weather?q='
-apikey='c5df5a566d55d3251922e9d9e057d763'
+#original api key masked from public code
+apikey='xxxx'
 
 try:
    city=str(input("Find your City: "))
